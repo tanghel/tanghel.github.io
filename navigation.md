@@ -22,8 +22,8 @@
 [About](pages/about.md)
 [Download](pages/download.md)
 [Download2](pages/download2.md)
-
-<!-- A more complex navigation example: ----------------------------------------
+ 
+<!-- A more complex navigation example: ---------------------------------------- -->
 
 [Menu Item 1]()
 
@@ -41,7 +41,7 @@
 
 [Menu Item 3](pages/item3.md)
 
----------------------------------------------------------------------------- -->
+<!------------------------------------------------------------------------------ -->
 
 <!--
   -- Change the Language
