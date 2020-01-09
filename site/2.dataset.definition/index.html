@@ -60,6 +60,10 @@
 <li class="active">
     <a href="./">DataSet Definition</a>
 </li>
+                                    
+<li >
+    <a href="../3.window.handling.object/">Window Handling Object</a>
+</li>
                                 </ul>
                             </li>
                         </ul>
@@ -75,8 +79,8 @@
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li class="disabled">
-                                <a rel="prev" >
+                            <li >
+                                <a rel="prev" href="../3.window.handling.object/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -97,12 +101,12 @@
 <p>A DataSet is a data container composed of tables (DataTables) that contain rows (DataRows), uses SQL queries to retrieve that data from the database, tracks changes to each columns and generated update/insert/delete statements transparently when required to write data back into the database.
 Each DataRow may have one of the following RowStates:</p>
 <ul>
-<li>New: the row was added to the dataSet and will be ignored on Save</li>
-<li>EditingNew: the row was already edited and it’s prepared to be saved</li>
-<li>Modified: an existing row was modified</li>
-<li>NotModified: an existing row was retrieved from the db</li>
-<li>Deleted: the row was marked as deleted, will be deleted only at Save</li>
-<li>None: the row was not added to the collection; the row is detached</li>
+<li><strong>New</strong>: the row was added to the dataSet and will be ignored on Save</li>
+<li><strong>EditingNew</strong>: the row was already edited and it’s prepared to be saved</li>
+<li><strong>Modified</strong>: an existing row was modified</li>
+<li><strong>NotModified</strong>: an existing row was retrieved from the db</li>
+<li><strong>Deleted</strong>: the row was marked as deleted, will be deleted only at Save</li>
+<li><strong>None</strong>: the row was not added to the collection; the row is detached</li>
 </ul>
 <p>For updateable DataSets, the tables must be arranged in the same order, in which the primary-key inserts are done.
 For the Delete operation, the DataSet will do the action in the reverse order.</p></div>

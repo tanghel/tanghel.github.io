@@ -4,3 +4,4 @@ nav:
   - Documentation:
     - Introduction: 1.introduction.md
     - DataSet Definition: 2.dataset.definition.md
+    - Window Handling Object: 3.window.handling.object.md
