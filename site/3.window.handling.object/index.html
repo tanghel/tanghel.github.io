@@ -127,7 +127,11 @@
     if (material == null) return;
 }
 
-</code></pre></div>
+</code></pre>
+
+<p>Order of execution: Event -&gt; WHO-method -&gt; BusObj. </p>
+<p>Do not call your BusinessObject-Method in a WHO override method. </p>
+<p>Do not write Business-Logic inside WHO methods.</p></div>
         </div>
 
         <footer class="col-md-12">
