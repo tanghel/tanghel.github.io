@@ -2,6 +2,7 @@ site_name: TimeLine Developer
 nav:
   - Home: index.md
   - Documentation:
-    - Introduction: 1.introduction.md
-    - DataSet Definition: 2.dataset.definition.md
-    - Window Handling Object: 3.window.handling.object.md
+    - Introduction: documentation/1.introduction.md
+    - DataSet Definition: documentation/2.dataset.definition.md
+    - Window Handling Object: documentation/3.window.handling.object.md
+  - MkDocs: mkdocs/1.using.mkdocs.md

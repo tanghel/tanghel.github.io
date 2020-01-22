@@ -7,11 +7,11 @@
         
         
         
-        <link rel="shortcut icon" href="/img/favicon.ico">
-        <title>TimeLine Developer</title>
-        <link href="/css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Window Handling Object - TimeLine Developer</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <script src="/js/jquery-1.10.2.min.js" defer></script>
-        <script src="/js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/.">TimeLine Developer</a>
+                    <a class="navbar-brand" href="../..">TimeLine Developer</a>
                 </div>
 
                 <!-- Expanded navigation -->
@@ -47,27 +47,27 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li >
-                                <a href="/index.md">Home</a>
+                                <a href="../../index.md">Home</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="/documentation/1.introduction/">Introduction</a>
+    <a href="../1.introduction/">Introduction</a>
 </li>
                                     
 <li >
-    <a href="/documentation/2.dataset.definition/">DataSet Definition</a>
+    <a href="../2.dataset.definition/">DataSet Definition</a>
 </li>
                                     
-<li >
-    <a href="/documentation/3.window.handling.object/">Window Handling Object</a>
+<li class="active">
+    <a href="./">Window Handling Object</a>
 </li>
                                 </ul>
                             </li>
                             <li >
-                                <a href="/mkdocs/1.using.mkdocs/">MkDocs</a>
+                                <a href="../../mkdocs/1.using.mkdocs/">MkDocs</a>
                             </li>
                         </ul>
 
@@ -77,21 +77,64 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li >
+                                <a rel="next" href="../2.dataset.definition/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../../mkdocs/1.using.mkdocs/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#window-handling-object">Window Handling Object</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
 
-    <div class="row-fluid">
-      <div id="main-content" class="span12">
-        <h1 id="404-page-not-found" style="text-align: center">404</h1>
-        <p style="text-align: center"><strong>Page not found</strong></p>
-      </div>
-    </div>
+<h1 id="window-handling-object">Window Handling Object</h1>
+<p>Never call Override-Methods, because:</p>
+<ul>
+<li>these methods are in general called automatically from the framework, as a result of an action</li>
+<li>they are usually part of a sequence of actions (OnSave() is called after OnPreSave() – if the latter returned&gt;0 – and if OnSave() returns&gt;0, OnPostSave() is called)</li>
+<li>these methods are the equivalent of "event handlers", which should never be called directly; if the code sequence contained in the override method is needed, a common method should be written and called every time it is needed</li>
+<li>whenever an event has to be called, it means that the functionality behind the event should be extracted into a method; in this case, the method can be called from the event itself, as well as anywhere else, explicitly. </li>
+</ul>
+<p><strong>Example</strong>: </p>
+<ul>
+<li>call WHO-method in override Method:</li>
+</ul>
+<pre><code>public override void OnNew(UIElement sourceControl)
+{
+    if (sourceControl == dgMaterial)
+    {
+        NewMaterial();
+    }
+}
+</code></pre>
 
+<ul>
+<li>call BusinessObject-method from WHO-method:</li>
+</ul>
+<pre><code>public virtual void NewMaterial()
+{
+    var material = BusObj.NewMatRow();
+    if (material == null) return;
+}
 
+</code></pre>
+
+<p>Order of execution: Event -&gt; WHO-method -&gt; BusObj. </p>
+<p>Do not call your BusinessObject-Method in a WHO override method. </p>
+<p>Do not write Business-Logic inside WHO methods.</p></div>
         </div>
 
         <footer class="col-md-12">
@@ -99,11 +142,11 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "/",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="/js/base.js" defer></script>
-        <script src="/search/main.js" defer></script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
