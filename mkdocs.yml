@@ -1,7 +1,9 @@
 site_name: TimeLine Developer
 nav:
+  - Home: index.md
   - Documentation:
     - Introduction: documentation/introduction.md
   - Best Practices:
-    - Coding Style: bestpractices/coding-style.md
+    - General: bestpractices/general.md
+    - Code Smells: bestpractices/code-smells.md
   - MkDocs: mkdocs/using-mkdocs.md

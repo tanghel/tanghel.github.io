@@ -1,4 +1,4 @@
-# Coding style
+# General coding style guidelines
 
 ## Naming
 

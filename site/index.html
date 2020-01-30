@@ -4,14 +4,14 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
         
         
-        
-        <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>MkDocs - TimeLine Developer</title>
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>TimeLine Developer</title>
+        <link href="css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -19,13 +19,13 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap-3.0.3.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
-    <body>
+    <body class="homepage">
 
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
@@ -39,22 +39,22 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../..">TimeLine Developer</a>
+                    <a class="navbar-brand" href=".">TimeLine Developer</a>
                 </div>
 
                 <!-- Expanded navigation -->
                 <div class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../..">Home</a>
+                            <li class="active">
+                                <a href=".">Home</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../../documentation/introduction/">Introduction</a>
+    <a href="documentation/introduction/">Introduction</a>
 </li>
                                 </ul>
                             </li>
@@ -63,16 +63,16 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../../bestpractices/general/">General</a>
+    <a href="bestpractices/general/">General</a>
 </li>
                                     
 <li >
-    <a href="../../bestpractices/code-smells/">Code Smells</a>
+    <a href="bestpractices/code-smells/">Code Smells</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="active">
-                                <a href="./">MkDocs</a>
+                            <li >
+                                <a href="mkdocs/using-mkdocs/">MkDocs</a>
                             </li>
                         </ul>
 
@@ -82,13 +82,13 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../../bestpractices/code-smells/">
+                            <li class="disabled">
+                                <a rel="next" >
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li class="disabled">
-                                <a rel="prev" >
+                            <li >
+                                <a rel="prev" href="documentation/introduction/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -100,26 +100,12 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#using-mkdocs">Using MkDocs</a></li>
+        <li class="main active"><a href="#timeline-developer">TimeLine Developer</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="using-mkdocs">Using MkDocs</h1>
-<p>To install the utilities, run the following command as administrator:</p>
-<pre><code>choco install mkdocs
-</code></pre>
-
-<p>To start the documentation in the browser, navigate in command prompt to the root folder of the documentation and run the command:</p>
-<pre><code>mkdocs serve
-</code></pre>
-
-<p>When the documentation is ready to deploy, stop the running server in the command prompt using <code>Ctrl-C</code>, then run the command: </p>
-<pre><code>mkdocs build
-</code></pre>
-
-<p>Now the documentation can be pushed on github!</p>
-<p>In GitHub Desktop, commit the changes, then don't forget to also click on Push in the upper right corner</p></div>
+<h1 id="timeline-developer">TimeLine Developer</h1></div>
         </div>
 
         <footer class="col-md-12">
@@ -127,11 +113,11 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "../..",
+            var base_url = ".",
                 shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
         </script>
-        <script src="../../js/base.js" defer></script>
-        <script src="../../search/main.js" defer></script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
@@ -199,3 +185,8 @@
 
     </body>
 </html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2020-01-30 15:44:23
+-->

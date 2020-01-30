@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Introduction - TimeLine Developer</title>
+        <title>Code Smells - TimeLine Developer</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -49,25 +49,25 @@
                             <li >
                                 <a href="../..">Home</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li class="active">
-    <a href="./">Introduction</a>
+<li >
+    <a href="../../documentation/introduction/">Introduction</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Best Practices <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../../bestpractices/general/">General</a>
+    <a href="../general/">General</a>
 </li>
                                     
-<li >
-    <a href="../../bestpractices/code-smells/">Code Smells</a>
+<li class="active">
+    <a href="./">Code Smells</a>
 </li>
                                 </ul>
                             </li>
@@ -83,12 +83,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../..">
+                                <a rel="next" href="../general/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../../bestpractices/general/">
+                                <a rel="prev" href="../../mkdocs/using-mkdocs/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -100,79 +100,54 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#introduction">Introduction</a></li>
-            <li><a href="#module">Module</a></li>
-            <li><a href="#dataset-definition">DataSet Definition</a></li>
-            <li><a href="#window-handling-object">Window Handling Object</a></li>
+        <li class="main active"><a href="#code-smells">Code smells</a></li>
+            <li><a href="#principle">Principle</a></li>
+            <li><a href="#referencing-controls-by-string">Referencing controls by string</a></li>
+            <li><a href="#referencing-columns-by-index">Referencing columns by index</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="introduction">Introduction</h1>
-<h2 id="module">Module</h2>
-<p>Each „complete” module has:</p>
+<h1 id="code-smells">Code smells</h1>
+<h2 id="principle">Principle</h2>
+<p>In computer programming, a code smell is any characteristic in the source code of a program that possibly indicates a deeper problem. Determining what is and is not a code smell is subjective, and varies by language, developer, and development methodology.</p>
+<p>The term was popularised by Kent Beck on WardsWiki in the late 1990s. Usage of the term increased after it was featured in the book Refactoring: Improving the Design of Existing Code by Martin Fowler. It is also a term used by agile programmers.</p>
+<p>One way to look at smells is with respect to principles and quality: "Smells are certain structures in the code that indicate violation of fundamental design principles and negatively impact design quality". Code smells are usually not bugs; they are not technically incorrect and do not prevent the program from functioning. Instead, they indicate weaknesses in design that may slow down development or increase the risk of bugs or failures in the future. Bad code smells can be an indicator of factors that contribute to technical debt. Robert C. Martin calls a list of code smells a "value system" for software craftsmanship.</p>
+<p>Often the deeper problem hinted at by a code smell can be uncovered when the code is subjected to a short feedback cycle, where it is refactored in small, controlled steps, and the resulting design is examined to see if there are any further code smells that in turn indicate the need for more refactoring. From the point of view of a programmer charged with performing refactoring, code smells are heuristics to indicate when to refactor, and what specific refactoring techniques to use. Thus, a code smell is a driver for refactoring.</p>
+<p>A 2015 study utilizing automated analysis for half a million source code commits and the manual examination of 9,164 commits determined to exhibit "code smells" found that:</p>
 <ul>
-<li>a Window Handling Object <strong>WHO:</strong>  specifies the behavior of the controls</li>
-<li>a BusinessObject <strong>busObj:</strong> data manipulation; direct access to the dataSet (and dataSet fields)</li>
-<li>at least one <strong>DataSet</strong></li>
+<li>There exists empirical evidence for the consequences of "technical debt", but there exists only anecdotal evidence as to how, when, or why this occurs.</li>
+<li>"Common wisdom suggests that urgent maintenance activities and pressure to deliver features while prioritizing time-to-market over code quality are often the causes of such smells".</li>
 </ul>
-<p>A <strong>Window Handling Object</strong> defines the behavior of the window itself and of the controls within it. It is the place where the „call-to-action” happens, i.e. it can respond to event handlers of any type. It responds to various events triggered by the window or by the controls, it holds references to the controls and can modify their properties at any given time. It does not contain business logic functionality; it delegates the functionality to the Business Object. It is the component that is able to handle exceptions and decide how the exception is handled (show message to user, retry, fail silently, etc.)</p>
-<p>A <strong>Business Object</strong> is the part of the program that encodes the real-world <a href="https://en.wikipedia.org/wiki/Business_rule" title="Business rule">business rules</a> that determine how data can be <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete" title="Create, read, update and delete">created, stored, and changed</a>. It is contrasted with the remainder of the software that might be concerned with lower-level details of managing a <a href="https://en.wikipedia.org/wiki/Database" title="Database">database</a>. It is an executor of commands usually triggered by a Window Handling Object or a parent Business Object.</p>
-<p>It should not implement events of any type; the responsibility of „call-to-action” belongs to the Window Handling Object.</p>
-<p>It does not reference any visual components (WPF); it does not display user-level information.</p>
-<p>When an unexpected result occurs inside of a function, the best practice would be to throw Exception instead of returning error-value.</p>
-<p>It should not handle Exceptions in try/catch blocks; in the catch blocks, it should always call „throw;” after some action is performed such as Logging the error.</p>
-<p>Uses LoggerSink sparingly (best practice: not at all).</p>
-<p><strong>Note<strong><em>*:</em>* the code-examples used in section </strong>BusinessObject</strong> and <strong>Window Handling Object</strong> are code sequences from Production Feedback-Module (shortcut: <strong>PRM</strong>)</p>
-<p><img alt="diagram" src="https://tanghel.github.io/images/1.introduction.01.png" /></p>
-<h2 id="dataset-definition">DataSet Definition</h2>
-<p>A DataSet is a data container composed of tables (DataTables) that contain rows (DataRows), uses SQL queries to retrieve that data from the database, tracks changes to each columns and generated update/insert/delete statements transparently when required to write data back into the database.
-Each DataRow may have one of the following RowStates:</p>
-<ul>
-<li><strong>New</strong>: the row was added to the dataSet and will be ignored on Save</li>
-<li><strong>EditingNew</strong>: the row was already edited and it’s prepared to be saved</li>
-<li><strong>Modified</strong>: an existing row was modified</li>
-<li><strong>NotModified</strong>: an existing row was retrieved from the db</li>
-<li><strong>Deleted</strong>: the row was marked as deleted, will be deleted only at Save</li>
-<li><strong>None</strong>: the row was not added to the collection; the row is detached</li>
-</ul>
-<p>For updateable DataSets, the tables must be arranged in the same order, in which the primary-key inserts are done.
-For the Delete operation, the DataSet will do the action in the reverse order.</p>
-<h2 id="window-handling-object">Window Handling Object</h2>
-<p>Never call Override-Methods, because:</p>
-<ul>
-<li>these methods are in general called automatically from the framework, as a result of an action</li>
-<li>they are usually part of a sequence of actions (OnSave() is called after OnPreSave() – if the latter returned&gt;0 – and if OnSave() returns&gt;0, OnPostSave() is called)</li>
-<li>these methods are the equivalent of "event handlers", which should never be called directly; if the code sequence contained in the override method is needed, a common method should be written and called every time it is needed</li>
-<li>whenever an event has to be called, it means that the functionality behind the event should be extracted into a method; in this case, the method can be called from the event itself, as well as anywhere else, explicitly. </li>
-</ul>
-<p><strong>Example</strong>: </p>
-<ul>
-<li>call WHO-method in override Method:</li>
-</ul>
-<pre><code>public override void OnNew(UIElement sourceControl)
+<p><br></p>
+<h2 id="referencing-controls-by-string">Referencing controls by string</h2>
+<p>Comparing control by name, although it works exactly like comparing to a control reference, it has one big downside: when the control no longer exists in the xaml file or has been renamed, the code will still compile and thus the module will not continue to work as expected.</p>
+<p><strong>Bad</strong></p>
+<pre><code>if (element.Name == &quot;tbMATPreis&quot;)
 {
-    if (sourceControl == dgMaterial)
-    {
-        NewMaterial();
-    }
+
 }
 </code></pre>
 
-<ul>
-<li>call BusinessObject-method from WHO-method:</li>
-</ul>
-<pre><code>public virtual void NewMaterial()
+<p>After switching to reference comparison, when the name of <em>tbMATPreis</em> changes to e.g. <em>tbMatPreis</em>, then the compiler will throw an error, prompting the user to alter the code accordingly.</p>
+<p><strong>Good</strong></p>
+<pre><code>if (element == tbMATPreis)
 {
-    var material = BusObj.NewMatRow();
-    if (material == null) return;
-}
 
+}
 </code></pre>
 
-<p>Order of execution: Event -&gt; WHO-method -&gt; BusObj. </p>
-<p>Do not call your BusinessObject-Method in a WHO override method. </p>
-<p>Do not write Business-Logic inside WHO methods.</p></div>
+<p><br></p>
+<h2 id="referencing-columns-by-index">Referencing columns by index</h2>
+<p>When referencing columns by index, there is the danger that after some time, the order of the columns will be changed, and the intended column at the given index is no longer valid (we may be referncing a different column altogether or even worse, we might get an <em>IndexOutOfRangeException</em>)</p>
+<p><strong>Bad</strong></p>
+<pre><code>this.dgMahng.Columns[1].Visible = false;
+</code></pre>
+
+<p>When referencing column by name, we have the guarantee that we are indeed setting the visibility of the control we intend to change</p>
+<p><strong>Good</strong></p>
+<pre><code>this.dgtbMahngZeitraum.Visible = false
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
